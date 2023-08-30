@@ -1,0 +1,38 @@
+ PARA SABER QUANTOS BENEFICIARIOS EXISTEM EM CADA REGIAO DE ACORDO COM A DATA:
+Codigo:
+select distinct regiao,count(*) as num_beneficiario
+from Beneficiario
+inner join Bolsa
+on(Beneficiario.id=Bolsa.fk_Beneficiario_id)
+where anoConcessao=dataescolhida
+group by regiao
+
+FAZER COM 2018 , 2019 e 2020
+/////////////////////////////////////////////////////////////////
+
+CURSOS COM NUMEROS DE BENEFICIARIOS ACIMA DE 30 MIL 
+Codigo : 
+
+select distinct nomeCurso , count(*) AS NUM_BENEFICIARIOS
+from Bolsa
+group by nomeCurso having count(*)>30000
+
+//////////////////////////////////////////////////////////////////////////////
+
+PARA SABER QUANTAS PESSOAS PARDAS , BRANCAS , AMARELAS , e nao informadas 
+fazem determinado tipo de curso :
+Codigo:
+
+select distinct nomeCurso,raca, count(*) as num_beneficiario 
+from Beneficiario
+inner join Bolsa
+on Beneficiario.id = Bolsa.fk_beneficiario_id
+where nomeCurso ='nomedocurso' and anoConcessao=anodeconcessao
+group by nomeCurso,raca
+
+/* fazer isso com os 3 cursos com numero de beneficiario acima de 30 mil 
+nos anos de 2018,2019 e 2020 */
+
+//////////////////////////////////////////////////////////////////
+
+
